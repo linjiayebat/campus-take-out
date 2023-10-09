@@ -27,11 +27,12 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 捕获新增员工重复员工username异常
+     * 捕获新增/修改员工 重复员工username异常
      */
     @ExceptionHandler
     public Result exceptionHandler(SQLIntegrityConstraintViolationException ex) {
         log.error("异常信息：{}", ex.getMessage());
+        log.info("username重复");
         return Result.error(ex.getMessage());
     }
 
