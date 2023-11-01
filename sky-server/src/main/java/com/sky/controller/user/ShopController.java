@@ -1,5 +1,6 @@
 package com.sky.controller.user;
 
+import com.sky.result.PageResult;
 import com.sky.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,18 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class ShopController {
 
+    public static final String KEY = "SHOP_STATUS";
+
     @Autowired
     private RedisTemplate redisTemplate;
 
     @GetMapping("/status")
     public Result<Integer> getShopStatus() {
         ValueOperations valueOperations = redisTemplate.opsForValue();
-        Integer shop_status = (Integer) valueOperations.get("Shop_Status");
+        Integer shop_status = (Integer) valueOperations.get(KEY);
         return Result.success(shop_status);
     }
+
+
+
 }

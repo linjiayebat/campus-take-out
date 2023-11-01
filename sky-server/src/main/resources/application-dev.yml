@@ -12,3 +12,13 @@ sky:
     port: 6379
     password: linjiaye
     database: 10
+
+  alioss:
+    endpoint:
+    access-key-id:
+    access-key-secret:
+    bucket-name:
+
+  wechat:
+    appid: wx5e5602e80c7404d4
+    secret: 38d90a4b7e44abb6972d6c6474da1d57

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.DishMapper">
+    <insert id="addDish" useGeneratedKeys="true" keyProperty="id">
+        insert into dish(name, category_id, price, image, description, create_time, update_time, create_user, update_user, status)
+        VALUES (#{name}, #{categoryId}, #{price}, #{image}, #{description}, #{createTime}, #{updateTime}, #{createUser},
+                #{updateUser}, #{status})
+    </insert>
+    <update id="updateDish">
+        update dish
+    </update>
+    <delete id="deleteDish">
+        delete from dish
+        <where>
+            id in
+            <foreach collection="ids" separator="," item="id" open="(" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+    <select id="getDish" resultType="com.sky.vo.DishVO">
+        SELECT d.*, c.name as categoryName FROM dish d JOIN category c on d.category_id = c.id
+        <where>
+            <if test="name != null and name != '' ">d.name = #{name}</if>
+            <if test="categoryId != null">d.category_id = #{categoryId}</if>
+            <if test="status != null">d.status = #{status}</if>
+        </where>
+    </select>
+
+</mapper>
