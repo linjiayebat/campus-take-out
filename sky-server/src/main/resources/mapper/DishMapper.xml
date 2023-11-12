@@ -8,8 +8,9 @@
                 #{updateUser}, #{status})
     </insert>
     <update id="updateDish">
-        update dish
+
     </update>
+
     <delete id="deleteDish">
         delete from dish
         <where>
@@ -25,6 +26,31 @@
             <if test="name != null and name != '' ">d.name = #{name}</if>
             <if test="categoryId != null">d.category_id = #{categoryId}</if>
             <if test="status != null">d.status = #{status}</if>
+        </where>
+    </select>
+
+    <select id="list" resultType="Dish" parameterType="Dish">
+        select * from dish
+        <where>
+            <if test="name != null">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+    <select id="getCategoryIds" resultType="java.lang.Long">
+        select category_id from dish
+        <where>
+            id in
+            <foreach collection="ids" item="id" separator="," open="(" close=")">
+                #{id}
+            </foreach>
         </where>
     </select>
 
