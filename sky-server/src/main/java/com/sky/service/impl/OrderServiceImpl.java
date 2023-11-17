@@ -14,6 +14,7 @@ import com.sky.exception.ShoppingCartBusinessException;
 import com.sky.mapper.*;
 import com.sky.result.PageResult;
 import com.sky.service.OrderService;
+import com.sky.service.ShoppingCartService;
 import com.sky.utils.WeChatPayUtil;
 import com.sky.vo.OrderPaymentVO;
 import com.sky.vo.OrderStatisticsVO;
@@ -60,8 +61,10 @@ public class OrderServiceImpl implements OrderService {
      */
     @Transactional
     public OrderSubmitVO submitOrder(OrdersSubmitDTO ordersSubmitDTO) {
-        //异常情况的处理（收货地址为空、购物车为空）
-        AddressBook addressBook = addressBookMapper.getById(ordersSubmitDTO.getAddressBookId());
+
+        // 处理异常 地址为空 或者 购物车为空 无法下单
+        Long addressBookId = ordersSubmitDTO.getAddressBookId();
+        AddressBook addressBook = addressBookMapper.getById(addressBookId);
         if (addressBook == null) {
             throw new AddressBookBusinessException(MessageConstant.ADDRESS_BOOK_IS_NULL);
         }
@@ -69,52 +72,103 @@ public class OrderServiceImpl implements OrderService {
         Long userId = BaseContext.getCurrentId();
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setUserId(userId);
-
-        //查询当前用户的购物车数据
-        List<ShoppingCart> shoppingCartList = shoppingCartMapper.list(shoppingCart);
-        if (shoppingCartList == null || shoppingCartList.size() == 0) {
+        List<ShoppingCart> list = shoppingCartMapper.list(shoppingCart);
+        if (list == null || list.size() == 0) {
             throw new ShoppingCartBusinessException(MessageConstant.SHOPPING_CART_IS_NULL);
         }
 
-        //构造订单数据
-        Orders order = new Orders();
-        BeanUtils.copyProperties(ordersSubmitDTO,order);
-        order.setPhone(addressBook.getPhone());
-        order.setAddress(addressBook.getDetail());
-        order.setConsignee(addressBook.getConsignee());
-        order.setNumber(String.valueOf(System.currentTimeMillis()));
-        order.setUserId(userId);
-        order.setStatus(Orders.PENDING_PAYMENT);
-        order.setPayStatus(Orders.UN_PAID);
-        order.setOrderTime(LocalDateTime.now());
 
-        //向订单表插入1条数据
-        orderMapper.insert(order);
+        // 向订单表插入数据
+        Orders orders = new Orders();
+        BeanUtils.copyProperties(ordersSubmitDTO, orders);
+        orders.setStatus(Orders.PENDING_PAYMENT);
+        orders.setUserId(BaseContext.getCurrentId());
+        orders.setPayStatus(Orders.UN_PAID);
+        orders.setOrderTime(LocalDateTime.now());
+        orders.setNumber(String.valueOf(System.currentTimeMillis()));
+        orders.setConsignee(addressBook.getConsignee());
+        orders.setAddress(String.valueOf(addressBook));
+        orders.setAddressBookId(addressBookId);
+        orders.setPhone(addressBook.getPhone());
+        orderMapper.insert(orders);
 
-        //订单明细数据
-        List<OrderDetail> orderDetailList = new ArrayList<>();
-        for (ShoppingCart cart : shoppingCartList) {
+        // 向订单详细表插入n条数据
+
+        List<ShoppingCart> shoppingCartList = shoppingCartMapper.list(shoppingCart);
+        for (ShoppingCart shoppingCart1 : shoppingCartList) {
             OrderDetail orderDetail = new OrderDetail();
-            BeanUtils.copyProperties(cart, orderDetail);
-            orderDetail.setOrderId(order.getId());
-            orderDetailList.add(orderDetail);
+            BeanUtils.copyProperties(shoppingCart1, orderDetail);
+            orderDetail.setOrderId(orders.getId());
+            orderDetailMapper.insertBatch(orderDetail);
         }
 
-        //向明细表插入n条数据
-        orderDetailMapper.insertBatch(orderDetailList);
+        // 清空购物车
+        shoppingCartMapper.clean(shoppingCart);
 
-        //清理购物车中的数据
-        shoppingCartMapper.deleteByUserId(userId);
-
-        //封装返回结果
-        OrderSubmitVO orderSubmitVO = OrderSubmitVO.builder()
-                .id(order.getId())
-                .orderNumber(order.getNumber())
-                .orderAmount(order.getAmount())
-                .orderTime(order.getOrderTime())
-                .build();
+        OrderSubmitVO orderSubmitVO = new OrderSubmitVO();
+        orderSubmitVO.setOrderTime(LocalDateTime.now());
+        orderSubmitVO.setOrderNumber(orders.getNumber());
+        orderSubmitVO.setOrderAmount(orders.getAmount());
+        orderSubmitVO.setId(orders.getId());
 
         return orderSubmitVO;
+
+
+//        //异常情况的处理（收货地址为空、购物车为空）
+//        AddressBook addressBook = addressBookMapper.getById(ordersSubmitDTO.getAddressBookId());
+//        if (addressBook == null) {
+//            throw new AddressBookBusinessException(MessageConstant.ADDRESS_BOOK_IS_NULL);
+//        }
+//
+//        Long userId = BaseContext.getCurrentId();
+//        ShoppingCart shoppingCart = new ShoppingCart();
+//        shoppingCart.setUserId(userId);
+//
+//        //查询当前用户的购物车数据
+//        List<ShoppingCart> shoppingCartList = shoppingCartMapper.list(shoppingCart);
+//        if (shoppingCartList == null || shoppingCartList.size() == 0) {
+//            throw new ShoppingCartBusinessException(MessageConstant.SHOPPING_CART_IS_NULL);
+//        }
+//
+//        //构造订单数据
+//        Orders order = new Orders();
+//        BeanUtils.copyProperties(ordersSubmitDTO,order);
+//        order.setPhone(addressBook.getPhone());
+//        order.setAddress(addressBook.getDetail());
+//        order.setConsignee(addressBook.getConsignee());
+//        order.setNumber(String.valueOf(System.currentTimeMillis()));
+//        order.setUserId(userId);
+//        order.setStatus(Orders.PENDING_PAYMENT);
+//        order.setPayStatus(Orders.UN_PAID);
+//        order.setOrderTime(LocalDateTime.now());
+//
+//        //向订单表插入1条数据
+//        orderMapper.insert(order);
+//
+//        //订单明细数据
+//        List<OrderDetail> orderDetailList = new ArrayList<>();
+//        for (ShoppingCart cart : shoppingCartList) {
+//            OrderDetail orderDetail = new OrderDetail();
+//            BeanUtils.copyProperties(cart, orderDetail);
+//            orderDetail.setOrderId(order.getId());
+//            orderDetailList.add(orderDetail);
+//        }
+//
+//        //向明细表插入n条数据
+//        orderDetailMapper.insertBatch(orderDetailList);
+//
+//        //清理购物车中的数据
+//        shoppingCartMapper.deleteByUserId(userId);
+//
+//        //封装返回结果
+//        OrderSubmitVO orderSubmitVO = OrderSubmitVO.builder()
+//                .id(order.getId())
+//                .orderNumber(order.getNumber())
+//                .orderAmount(order.getAmount())
+//                .orderTime(order.getOrderTime())
+//                .build();
+//
+//        return orderSubmitVO;
     }
 
     /**

@@ -53,6 +53,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         ShoppingCart shoppingCart = new ShoppingCart();
         BeanUtils.copyProperties(shoppingCartDTO, shoppingCart);
         shoppingCart.setUserId(BaseContext.getCurrentId());
+        Dish dish1 = dishMapper.selectById(shoppingCartDTO.getDishId());
+        shoppingCart.setName(dish1.getName());
+        shoppingCart.setImage(dish1.getImage());
+
 
         List<ShoppingCart> list = shoppingCartMapper.list(shoppingCart);
         if (list != null && list.size() > 0) {
