@@ -8,7 +8,16 @@
                 #{updateUser}, #{status})
     </insert>
     <update id="updateDish">
-
+        update dish
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        where id = #{id}
     </update>
 
     <delete id="deleteDish">
@@ -23,9 +32,9 @@
     <select id="getDish" resultType="com.sky.vo.DishVO">
         SELECT d.*, c.name as categoryName FROM dish d JOIN category c on d.category_id = c.id
         <where>
-            <if test="name != null and name != '' ">d.name = #{name}</if>
-            <if test="categoryId != null">d.category_id = #{categoryId}</if>
-            <if test="status != null">d.status = #{status}</if>
+            <if test="name != null and name != '' ">and d.name like CONCAT("%", #{name}, "%")</if>
+            <if test="categoryId != null">and d.category_id = #{categoryId}</if>
+            <if test="status != null">and d.status = #{status}</if>
         </where>
     </select>
 
@@ -54,4 +63,15 @@
         </where>
     </select>
 
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from dish
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/资料/day01/后端初始工程/sky-take-out/sky-common/src/main/java/com/sky</OriginalElement>
+  <nodes>
+    <node x="368.0" y="0.0">com.sky.properties.JwtProperties</node>
+    <node x="0.0" y="0.0">com.sky.properties.WeChatProperties</node>
+    <node x="0.0" y="1192.0">com.sky.utils.HttpClientUtil</node>
+    <node x="2623.0" y="1057.0">com.sky.exception.AccountLockedException</node>
+    <node x="680.0" y="1070.0">com.sky.exception.OrderBusinessException</node>
+    <node x="693.0" y="1192.0">com.sky.context.BaseContext</node>
+    <node x="2015.0" y="1057.0">com.sky.exception.AccountNotFoundException</node>
+    <node x="1726.5" y="917.0">com.sky.exception.BaseException</node>
+    <node x="1072.0" y="0.0">com.sky.constant.MessageConstant</node>
+    <node x="1613.0" y="1192.0">com.sky.json.JacksonObjectMapper</node>
+    <node x="2432.0" y="1192.0">com.sky.constant.StatusConstant</node>
+    <node x="2930.0" y="1057.0">com.sky.exception.UserNotLoginException</node>
+    <node x="332.0" y="1070.0">com.sky.exception.AddressBookBusinessException</node>
+    <node x="1672.0" y="1057.0">com.sky.exception.SetmealEnableFailedException</node>
+    <node x="1974.0" y="1192.0">com.sky.utils.JwtUtil</node>
+    <node x="978.0" y="1070.0">com.sky.exception.ShoppingCartBusinessException</node>
+    <node x="3225.0" y="1057.0">com.sky.exception.PasswordErrorException</node>
+    <node x="705.0" y="0.0">com.sky.utils.AliOssUtil</node>
+    <node x="1334.0" y="1192.0">com.sky.constant.AutoFillConstant</node>
+    <node x="1479.0" y="0.0">com.sky.properties.AliOssProperties</node>
+    <node x="1798.0" y="0.0">com.sky.result.Result</node>
+    <node x="1331.0" y="1070.0">com.sky.exception.DeletionNotAllowedException</node>
+    <node x="1020.0" y="1192.0">com.sky.enumeration.OperationType</node>
+    <node x="2366.0" y="0.0">com.sky.utils.WeChatPayUtil</node>
+    <node x="432.0" y="1192.0">com.sky.constant.JwtClaimsConstant</node>
+    <node x="2342.0" y="1070.0">com.sky.exception.LoginFailedException</node>
+    <node x="2662.0" y="1192.0">com.sky.constant.PasswordConstant</node>
+    <node x="2082.0" y="0.0">com.sky.result.PageResult</node>
+    <node x="0.0" y="1070.0">com.sky.exception.PasswordEditFailedException</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.sky.exception.ShoppingCartBusinessException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-32.0" />
+      <point x="1144.5" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.PasswordEditFailedException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-32.0" />
+      <point x="156.0" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.SetmealEnableFailedException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-45.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.UserNotLoginException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-45.0" />
+      <point x="3067.5" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.AccountLockedException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-45.0" />
+      <point x="2766.5" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.DeletionNotAllowedException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-32.0" />
+      <point x="1491.5" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.LoginFailedException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-32.0" />
+      <point x="2472.5" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.OrderBusinessException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-32.0" />
+      <point x="819.0" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.AddressBookBusinessException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-32.0" />
+      <point x="496.0" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.AccountNotFoundException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-45.0" />
+      <point x="2168.5" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.sky.exception.PasswordErrorException" target="com.sky.exception.BaseException" relationship="GENERALIZATION">
+      <point x="0.0" y="-45.0" />
+      <point x="3364.0" y="1032.0" />
+      <point x="1833.5" y="1032.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.4540022707919388" showDependencies="false" x="2192.4524722321994" y="244.7501641189158" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

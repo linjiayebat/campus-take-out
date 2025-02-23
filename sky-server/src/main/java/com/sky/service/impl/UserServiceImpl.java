@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
      * @param userLoginDTO
      * @return
      */
-    @Override
     public User login(UserLoginDTO userLoginDTO) {
         Map<String, String> paramMap = new HashMap<>();
         paramMap.put("appid", weChatProperties.getAppid());

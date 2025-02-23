@@ -63,4 +63,8 @@ public interface DishService {
      * @param id
      */
     void bpDish(Integer status, Long id);
+
+    Dish getDish(Long dishId);
+
+    DishVO getByIdWithFlavor(Long id);
 }

@@ -89,10 +89,10 @@ public class DishServiceImpl implements DishService {
             if (status == 1) throw new DeletionNotAllowedException(MessageConstant.DISH_ON_SALE);
         }
 
-        List<Long> setMealId = setmealDishMapper.getSetMealId(ids);
-        if (setMealId != null && setMealId.size() > 0) {
-            throw new DeletionNotAllowedException(MessageConstant.CATEGORY_BE_RELATED_BY_SETMEAL);
-        }
+//        List<Long> setMealId = setmealDishMapper.getSetmealIdsByDishIds(ids);
+//        if (setMealId != null && setMealId.size() > 0) {
+//            throw new DeletionNotAllowedException(MessageConstant.CATEGORY_BE_RELATED_BY_SETMEAL);
+//        }
 
         dishMapper.deleteDish(ids);
         dishFlavorsMapper.deleteDishFlavors(ids);
@@ -141,6 +141,11 @@ public class DishServiceImpl implements DishService {
         dishMapper.bpDish(status, id);
     }
 
+    @Override
+    public Dish getDish(Long dishId) {
+        return dishMapper.selectById(dishId);
+    }
+
     /**
      * 条件查询菜品和口味
      * @param dish
@@ -165,7 +170,26 @@ public class DishServiceImpl implements DishService {
         return dishVOList;
     }
 
+    /**
+     * 根据id查询菜品和对应的口味数据
+     *
+     * @param id
+     * @return
+     */
+    public DishVO getByIdWithFlavor(Long id) {
+        //根据id查询菜品数据
+        Dish dish = dishMapper.getById(id);
 
+        //根据菜品id查询口味数据
+        List<DishFlavor> dishFlavors = dishFlavorsMapper.getByDishId(id);
+
+        //将查询到的数据封装到VO
+        DishVO dishVO = new DishVO();
+        BeanUtils.copyProperties(dish, dishVO);
+        dishVO.setFlavors(dishFlavors);
+
+        return dishVO;
+    }
 
 
 }

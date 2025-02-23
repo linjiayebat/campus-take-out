@@ -23,7 +23,7 @@ public class OrderTask {
     /**
      * 处理支付超时订单
      */
-    @Scheduled(cron = "0 * * * * ?") // 每分钟执行一遍
+//    @Scheduled(cron = "0 * * * * ?") // 每分钟执行一遍
     public void processTimeOut() {
         log.info("处理支付超时订单：{}", LocalDateTime.now());
         // select * from orders where status = ? and order_time < localdatetime - 15
@@ -43,7 +43,7 @@ public class OrderTask {
     /**
      * 处理一直在派送中的订单
      */
-    @Scheduled(cron = "0 0 1 * * ?") // 每天凌晨一点处理任务
+//    @Scheduled(cron = "0 0 1 * * ?") // 每天凌晨一点处理任务
     public void processDeliveryOrder() {
         log.info("处理一直处理派送中订单：{}", LocalDateTime.now());
         // select * from orders where status = ? and order_time < localdatetime - 1h

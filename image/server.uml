@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/资料/day01/后端初始工程/sky-take-out/sky-server/src/main/java/com/sky</OriginalElement>
+  <nodes>
+    <node x="1268.0" y="0.0">com.sky.service.CategoryService</node>
+    <node x="0.0" y="1291.0">com.sky.service.ReportService</node>
+    <node x="0.0" y="3091.0">com.sky.mapper.DishFlavorsMapper</node>
+    <node x="2469.0" y="2715.0">com.sky.controller.admin.CommonController</node>
+    <node x="503.0" y="1483.0">com.sky.service.impl.ShoppingCartServiceImpl</node>
+    <node x="486.0" y="2476.0">com.sky.mapper.UserMapper</node>
+    <node x="455.0" y="0.0">com.sky.service.SetmealService</node>
+    <node x="1541.0" y="1291.0">com.sky.controller.admin.EmployeeController</node>
+    <node x="1519.0" y="2715.0">com.sky.handler.GlobalExceptionHandler</node>
+    <node x="835.0" y="2928.0">com.sky.controller.user.CategoryController</node>
+    <node x="2536.0" y="0.0">com.sky.service.WorkspaceService</node>
+    <node x="2788.0" y="1802.0">com.sky.controller.admin.SetmealController</node>
+    <node x="351.0" y="1802.0">com.sky.controller.user.OrderController</node>
+    <node x="787.0" y="3091.0">com.sky.annotation.AutoFill</node>
+    <node x="554.0" y="1291.0">com.sky.service.ShoppingCartService</node>
+    <node x="0.0" y="2157.0">com.sky.controller.user.AddressBookController</node>
+    <node x="2144.0" y="244.0">com.sky.service.impl.AddressBookServiceImpl</node>
+    <node x="369.0" y="2715.0">com.sky.interceptor.JwtTokenAdminInterceptor</node>
+    <node x="1530.0" y="2928.0">com.sky.SkyApplication</node>
+    <node x="2311.0" y="2157.0">com.sky.websocket.WebSocketServer</node>
+    <node x="1187.0" y="2928.0">com.sky.task.WebSocketTask</node>
+    <node x="0.0" y="504.0">com.sky.service.impl.OrderServiceImpl</node>
+    <node x="2536.0" y="192.0">com.sky.service.impl.WorkspaceServiceImpl</node>
+    <node x="1703.0" y="0.0">com.sky.service.EmployeeService</node>
+    <node x="2455.0" y="1291.0">com.sky.controller.admin.OrderController</node>
+    <node x="922.0" y="2157.0">com.sky.controller.admin.ReportController</node>
+    <node x="946.0" y="2476.0">com.sky.mapper.AddressBookMapper</node>
+    <node x="1990.0" y="2928.0">com.sky.mapper.OrderDetailMapper</node>
+    <node x="1703.0" y="270.0">com.sky.service.impl.EmployeeServiceImpl</node>
+    <node x="380.0" y="2157.0">com.sky.controller.notify.PayNotifyController</node>
+    <node x="1753.0" y="2476.0">com.sky.controller.user.ShopController</node>
+    <node x="2332.0" y="1802.0">com.sky.controller.admin.CategoryController</node>
+    <node x="0.0" y="1916.0">com.sky.service.impl.UserServiceImpl</node>
+    <node x="1045.0" y="3091.0">com.sky.mapper.ReportMapper</node>
+    <node x="455.0" y="296.0">com.sky.service.impl.SetmealServiceImpl</node>
+    <node x="884.5" y="0.0">com.sky.service.DishService</node>
+    <node x="2507.0" y="2928.0">com.sky.mapper.SetmealDishMapper</node>
+    <node x="905.0" y="1291.0">com.sky.mapper.OrderMapper</node>
+    <node x="34.0" y="1802.0">com.sky.service.UserService</node>
+    <node x="0.0" y="1483.0">com.sky.service.impl.ReportServiceImpl</node>
+    <node x="2650.0" y="2157.0">com.sky.controller.admin.ShopController</node>
+    <node x="1300.0" y="1802.0">com.sky.mapper.SetmealMapper</node>
+    <node x="1782.0" y="1802.0">com.sky.config.WebMvcConfiguration</node>
+    <node x="884.0" y="296.0">com.sky.service.impl.DishServiceImpl</node>
+    <node x="1921.0" y="2157.0">com.sky.controller.user.ShoppingCartController</node>
+    <node x="2703.0" y="2476.0">com.sky.mapper.CategoryMapper</node>
+    <node x="0.0" y="2715.0">com.sky.mapper.ShoppingCartMapper</node>
+    <node x="944.0" y="2715.0">com.sky.interceptor.JwtTokenUserInterceptor</node>
+    <node x="2160.5" y="0.0">com.sky.service.AddressBookService</node>
+    <node x="2080.0" y="2715.0">com.sky.controller.user.SetmealController</node>
+    <node x="349.0" y="3091.0">com.sky.config.WebSocketConfiguration</node>
+    <node x="2410.0" y="2476.0">com.sky.task.OrderTask</node>
+    <node x="856.0" y="1802.0">com.sky.controller.admin.DishController</node>
+    <node x="478.0" y="2928.0">com.sky.config.OssConfiguration</node>
+    <node x="0.0" y="0.0">com.sky.service.OrderService</node>
+    <node x="0.0" y="2476.0">com.sky.mapper.EmployeeMapper</node>
+    <node x="1765.0" y="2928.0">com.sky.task.MyTask</node>
+    <node x="2826.0" y="2715.0">com.sky.aspect.AutoFillAspect</node>
+    <node x="1268.0" y="244.0">com.sky.service.impl.CategoryServiceImpl</node>
+    <node x="0.0" y="2928.0">com.sky.config.RedisConfiguration</node>
+    <node x="2082.0" y="2476.0">com.sky.controller.user.DishController</node>
+    <node x="2043.0" y="1291.0">com.sky.mapper.DishMapper</node>
+    <node x="1486.0" y="2157.0">com.sky.controller.admin.WorkSpaceController</node>
+    <node x="1351.0" y="2476.0">com.sky.controller.user.UserController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.sky.service.impl.ReportServiceImpl" target="com.sky.service.ReportService" relationship="REALIZATION">
+      <point x="0.0" y="-137.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.sky.service.impl.SetmealServiceImpl" target="com.sky.service.SetmealService" relationship="REALIZATION">
+      <point x="0.0" y="-189.0" />
+      <point x="0.0" y="123.0" />
+    </edge>
+    <edge source="com.sky.service.impl.ShoppingCartServiceImpl" target="com.sky.service.ShoppingCartService" relationship="REALIZATION">
+      <point x="0.0" y="-137.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.sky.service.impl.CategoryServiceImpl" target="com.sky.service.CategoryService" relationship="REALIZATION">
+      <point x="0.0" y="-163.0" />
+      <point x="0.0" y="97.0" />
+    </edge>
+    <edge source="com.sky.service.impl.OrderServiceImpl" target="com.sky.service.OrderService" relationship="REALIZATION">
+      <point x="0.0" y="-371.0" />
+      <point x="0.0" y="227.0" />
+    </edge>
+    <edge source="com.sky.service.impl.EmployeeServiceImpl" target="com.sky.service.EmployeeService" relationship="REALIZATION">
+      <point x="0.0" y="-137.0" />
+      <point x="0.0" y="110.0" />
+    </edge>
+    <edge source="com.sky.service.impl.DishServiceImpl" target="com.sky.service.DishService" relationship="REALIZATION">
+      <point x="0.0" y="-189.0" />
+      <point x="0.0" y="123.0" />
+    </edge>
+    <edge source="com.sky.service.impl.WorkspaceServiceImpl" target="com.sky.service.WorkspaceService" relationship="REALIZATION">
+      <point x="0.0" y="-150.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.sky.service.impl.AddressBookServiceImpl" target="com.sky.service.AddressBookService" relationship="REALIZATION">
+      <point x="0.0" y="-137.0" />
+      <point x="0.0" y="97.0" />
+    </edge>
+    <edge source="com.sky.service.impl.UserServiceImpl" target="com.sky.service.UserService" relationship="REALIZATION">
+      <point x="0.0" y="-98.0" />
+      <point x="0.0" y="32.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.23427331887201736" showDependencies="false" x="1596.5" y="1603.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

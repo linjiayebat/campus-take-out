@@ -72,7 +72,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 Dish dish = dishMapper.selectById(shoppingCartDTO.getDishId());
                 price = dish.getPrice();
             } else {
-                Setmeal setmeal = setmealMapper.selctById(shoppingCartDTO.getSetmealId());
+                Setmeal setmeal = setmealMapper.getById(shoppingCartDTO.getSetmealId());
                 price = setmeal.getPrice();
             }
 

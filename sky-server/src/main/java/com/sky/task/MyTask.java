@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class MyTask {
 
-    @Scheduled(cron = "0/5 * * * * ? ")
+//    @Scheduled(cron = "0/5 * * * * ? ")
     public void excuteTask() {
         log.info("执行时间：{}", new Date());
     }

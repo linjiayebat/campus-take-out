@@ -23,20 +23,22 @@ public class CommonController {
     @Autowired
     private AliOssUtil aliOssUtil;
 
+
     @PostMapping("/upload")
     public Result<String> upload(MultipartFile multipartFile) {
-        String originalFilename = multipartFile.getOriginalFilename();
-        String substring = originalFilename.substring(originalFilename.lastIndexOf("."));
-        String filename = UUID.randomUUID() + substring;
-        log.info("filename + {}", filename);
-
-        try {
-            aliOssUtil.upload(multipartFile.getBytes(), filename);
-            return Result.success(filename);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return Result.error(MessageConstant.UPLOAD_FAILED);
-        }
+//        String originalFilename = multipartFile.getOriginalFilename();
+//        String substring = originalFilename.substring(originalFilename.lastIndexOf("."));
+//        String filename = UUID.randomUUID() + substring;
+//        log.info("filename + {}", filename);
+//
+//        try {
+//            aliOssUtil.upload(multipartFile.getBytes(), filename);
+//            return Result.success(filename);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return Result.error(MessageConstant.UPLOAD_FAILED);
+//        }
+        return Result.success("https://img1.baidu.com/it/u=286074935,1365645234&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1716397200&t=eb0ac09d3dbbe10dedcb5b80bf20764e");
     }
 
 

@@ -24,6 +24,8 @@ public class ShopController {
         return Result.success();
     }
 
+
+
     @GetMapping("/status")
     public Result<Integer> getShopStatus() {
         ValueOperations valueOperations = redisTemplate.opsForValue();

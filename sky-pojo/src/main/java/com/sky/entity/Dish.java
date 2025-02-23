@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Dish implements Serializable {
+    public class Dish implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
